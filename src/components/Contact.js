@@ -14,7 +14,7 @@ function Contact() {
     const newMsg = { id: Date.now(), ...formData };
 
     try {
-      const response = await fetch('http://localhost:5000/messages', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMsg)

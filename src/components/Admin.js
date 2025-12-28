@@ -15,7 +15,7 @@ function Admin() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/products');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/products`);
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
@@ -33,7 +33,7 @@ function Admin() {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/messages');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/messages`);
       if (response.ok) {
         const data = await response.json();
         setMessages(data);
@@ -80,7 +80,7 @@ function Admin() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/products', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
         method: 'POST',
         body: data // No Content-Type header needed for FormData
       });
@@ -101,7 +101,7 @@ function Admin() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/products/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/products/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -116,7 +116,7 @@ function Admin() {
 
   const handleDeleteMessage = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/messages/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/messages/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {
