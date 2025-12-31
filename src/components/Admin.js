@@ -70,7 +70,7 @@ function Admin() {
     e.preventDefault();
 
     const data = new FormData();
-    data.append('id', Math.floor(Date.now() / 1000)); // Use Unix timestamp (seconds) to fit in standard INT
+    data.append('id', Date.now());
     data.append('name', formData.name);
     data.append('price', formData.price);
     data.append('description', formData.description);
