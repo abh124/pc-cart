@@ -49,9 +49,8 @@ app.get('/products', (req, res) => {
 });
 
 // POST new product
-app.post('/products', upload.single('image'), (req, res) => {
-  const { id, name, price, description, category } = req.body;
-  const image = req.file ? `http://localhost:5000/uploads/${req.file.filename}` : null;
+const baseUrl = `${req.protocol}://${req.get("host")}`;
+const image = req.file ? `${baseUrl}/uploads/${req.file.filename}` : null;
 
   const sql = 'INSERT INTO products (id, name, price, description, category, image) VALUES (?, ?, ?, ?, ?, ?)';
   db.query(sql, [id, name, price, description, category, image], (err, result) => {
